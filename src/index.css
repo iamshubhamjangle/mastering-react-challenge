@@ -18,11 +18,10 @@ nav {
   text-align: center;
   background-color: cornflowerblue;
 }
-
 #second {
   background-color: aquamarine;
 }
 
-.bg-primary {
+.bg {
   background-color: chartreuse;
 }
