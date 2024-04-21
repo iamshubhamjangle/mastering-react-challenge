@@ -1,25 +1,19 @@
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <ProductList />
+      <h1>You would love ❤</h1>
+      <TrueMumbaiker />
+      <FakeMumbaiker />
     </div>
   );
 }
 
 export default App;
 
-function Navbar() {
-  return <nav>Hello Coders!</nav>;
+function TrueMumbaiker() {
+  return <img src="/images/Vada_Pav.png" alt="Vada Pav" />;
 }
 
-function ProductList() {
-  return (
-    <ul>
-      <li style={{ backgroundColor: "orange" }}>Product 1</li>
-      <li id="second">Product 2</li>
-      <li className="bg">Product 3</li>
-      <li>Product 4</li>
-    </ul>
-  );
+function FakeMumbaiker() {
+  return <img src="/images/Momos.png" alt="Momos" />;
 }

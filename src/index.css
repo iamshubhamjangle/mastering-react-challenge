@@ -12,16 +12,13 @@ code {
     monospace;
 }
 
-nav {
+.App {
   padding: 1rem;
-  font-weight: bold;
-  text-align: center;
-  background-color: cornflowerblue;
-}
-#second {
-  background-color: aquamarine;
 }
 
-.bg {
-  background-color: chartreuse;
+img {
+  width: 200px;
+  height: 200px;
+  margin: 0.5rem;
+  border: 1px solid grey;
 }
