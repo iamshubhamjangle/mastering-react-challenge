@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 function App() {
-  const [items, setItem] = useState([]);
   const [input, setInput] = useState("");
+  const [items, setItems] = useState([]);
 
   const handleClick = () => {
-    setItem((prev) => [...prev, input]);
-    // alert("Button was clicked");
+    // alert("Button was clicked" + input);
+    setItems((prev) => [...prev, input]);
   };
 
   return (
@@ -18,9 +18,9 @@ function App() {
         ))}
       </ul>
       <input
-        placeholder="Enter Item Name"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        placeholder="Enter a text"
       />
       <button onClick={handleClick}>Create</button>
     </div>
