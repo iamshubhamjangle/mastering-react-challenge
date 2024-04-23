@@ -1,16 +1,30 @@
+// https://jsonplaceholder.typicode.com/posts
+
+import { useState } from "react";
+
 function App() {
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await res.json();
+    setData(data);
+  };
+
   return (
     <div>
       <h3>Day 5: API Request & Passing Data</h3>
-      <button>Fetch Data</button>
-      <Post />
+      <button onClick={fetchData}>Fetch All Post</button>
+      {data.map((data, index) => {
+        return <Post key={index} title={data.title} body={data.body} />;
+      })}
     </div>
   );
 }
 
 export default App;
 
-function Post() {
+function Post({ title, body }) {
   return (
     <div class="card">
       <div class="img-container">
@@ -20,11 +34,8 @@ function Post() {
           alt=""
         />
       </div>
-      <h1>Embracing Minimalism</h1>
-      <p>
-        From minimalist sculptures to minimalist paintings, this blog will
-        inspire you to appreciate the beauty that lies in simplicity.
-      </p>
+      <h1>{title}</h1>
+      <p>{body}</p>
     </div>
   );
 }
