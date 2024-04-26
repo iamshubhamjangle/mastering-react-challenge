@@ -1,40 +1,42 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function App() {
-  const [show, setShow] = useState(false);
+  const [votes, setVotes] = useState(1000);
+  const [candidates, setCandidates] = useState(545);
 
   return (
-    <div>
-      <button onClick={() => setShow((prev) => !prev)}>
-        {show ? "Hide" : "Show"}
-      </button>
-      {show && <SubComponent />}
+    <div className="component">
+      <p>Election Commission</p>
+      <p>Votes: {votes}</p>
+      <p>Candidates: {candidates}</p>
+      <Politician setVotes={setVotes} />
     </div>
   );
 }
 
-function SubComponent() {
-  const [userId, setUserId] = useState(1);
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log("run effect when component mounts for user: " + userId);
-    return () => console.log("cleanup function userId: " + userId);
-  }, [userId]);
-
+function Politician({ setVotes }) {
   return (
-    <div className="App">
-      <div>
-        <p>User selected: {userId}</p>
-        <p>Counter value: {count}</p>
-      </div>
-      <div>
-        <button onClick={() => setUserId(1)}>User 1</button>
-        <button onClick={() => setUserId(2)}>User 2</button>
-        <button onClick={() => setCount((prev) => prev + 1)}>
-          Increment Count
-        </button>
-      </div>
+    <div className="component">
+      <p>Politician</p>
+      <Businessman setVotes={setVotes} />
+    </div>
+  );
+}
+
+function Businessman({ setVotes }) {
+  return (
+    <div className="component">
+      <p>Businessman</p>
+      <Citizen setVotes={setVotes} />
+    </div>
+  );
+}
+
+function Citizen({ setVotes }) {
+  return (
+    <div className="component">
+      <p>Citizen</p>
+      <button onClick={() => setVotes((v) => v + 1)}>+</button>
     </div>
   );
 }

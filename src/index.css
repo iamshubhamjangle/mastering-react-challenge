@@ -5,27 +5,31 @@ body {
   font-family: "Sora";
 }
 
-.App {
-  border: 2px solid #2659ff;
-  border-radius: 10px;
-  padding: 10px;
+.component {
+  border: 3px solid turquoise;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 button {
-  padding: 10px 40px;
-  background-color: #2659ff;
+  font-weight: 800;
+  background-color: coral;
   border: none;
-  border-radius: 10px;
-  color: aliceblue;
-  font-weight: 600;
-  margin: 5px;
+  border-radius: 10%;
+  padding: 5px 14px;
+  margin: 0px 5px 10px 0px;
   cursor: pointer;
+  font-size: large;
 }
 
 button:hover {
-  background-color: rgb(29, 72, 212);
+  background-color: orangered;
 }
 
 button:active {
   scale: 95%;
+}
+
+p {
+  margin: 10px 0;
 }
