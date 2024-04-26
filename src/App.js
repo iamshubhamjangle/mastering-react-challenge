@@ -1,41 +1,40 @@
-// https://jsonplaceholder.typicode.com/posts
+import React, { useState, useEffect } from "react";
 
-import { useState } from "react";
-
-function App() {
-  const [data, setData] = useState([]);
-
-  const fetchData = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const data = await res.json();
-    setData(data);
-  };
+export default function App() {
+  const [show, setShow] = useState(false);
 
   return (
     <div>
-      <h3>Day 5: API Request & Passing Data</h3>
-      <button onClick={fetchData}>Fetch All Post</button>
-      {data.map((data, index) => {
-        return <Post key={index} title={data.title} body={data.body} />;
-      })}
+      <button onClick={() => setShow((prev) => !prev)}>
+        {show ? "Hide" : "Show"}
+      </button>
+      {show && <SubComponent />}
     </div>
   );
 }
 
-export default App;
+function SubComponent() {
+  const [userId, setUserId] = useState(1);
+  const [count, setCount] = useState(0);
 
-function Post({ title, body }) {
+  useEffect(() => {
+    console.log("run effect when component mounts for user: " + userId);
+    return () => console.log("cleanup function userId: " + userId);
+  }, [userId]);
+
   return (
-    <div class="card">
-      <div class="img-container">
-        <img
-          src="https://images.unsplash.com/photo-1610932793632-6ba00bdffee8?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTA2NzkwMDh8&ixlib=rb-4.0.3&q=85"
-          width="336"
-          alt=""
-        />
+    <div className="App">
+      <div>
+        <p>User selected: {userId}</p>
+        <p>Counter value: {count}</p>
       </div>
-      <h1>{title}</h1>
-      <p>{body}</p>
+      <div>
+        <button onClick={() => setUserId(1)}>User 1</button>
+        <button onClick={() => setUserId(2)}>User 2</button>
+        <button onClick={() => setCount((prev) => prev + 1)}>
+          Increment Count
+        </button>
+      </div>
     </div>
   );
 }
